@@ -1,0 +1,47 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row mt-3">
+  {% for product in products %}
+ <div class="col-lg-4 mt-5">
+  <img class="thumbnail img-fluid" style="height:300px; width:100%;" src="{{ product.product_img.url }}" alt="">
+  <div class="box-element product">
+<h6><strong>{{product.product_name}}</strong></h6>
+<hr>
+
+{% comment %} <a href="#" class="btn btn-outline-success">Add to cart</a> {% endcomment %}
+
+<a  href="/{{product.id}}/" class="btn btn-outline-dark">Add to cart</a>
+
+
+
+
+<a href="#" class="btn btn-outline-success">View</a>
+<h4 style="display: inline-block; float: right;">${{product.product_price}}</h4>
+
+  </div>
+ </div>
+ {% endfor %}
+ <!-- <div class="col-lg-4">
+  <img class="thumbnail img-fluid" src="{% static 'images/cart.png' %}" alt="">
+   <div class="box-element product">
+<h6><strong>Product</strong></h6>
+<hr>
+<button class="btn btn-outline-secondary add-btn">Add to cart</button>
+<a href="#" class="btn btn-outline-success">View</a>
+<h4 style="display: inline-block; float: right;">$20</h4>
+  </div>
+ </div>
+ <div class="col-lg-4">
+  <img class="thumbnail img-fluid" src="{% static 'images/cart.png' %}" alt="">
+   <div class="box-element product">
+   <h6><strong>Product</strong></h6>
+   <hr>
+   <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+   <a href="#" class="btn btn-outline-success">View</a>
+   <h4 style="display: inline-block; float: right;">$20</h4>
+   </div>
+ </div> -->
+</div>
+{% endblock %}
+
