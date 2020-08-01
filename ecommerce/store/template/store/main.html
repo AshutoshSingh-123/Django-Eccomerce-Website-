@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% comment %} fontawesoem {% endcomment %}
+    <script src="https://kit.fontawesome.com/e16be2307c.js" crossorigin="anonymous"></script>
     <!-- bootstrap css -->
     <link
       rel="stylesheet"
@@ -34,8 +36,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'store' %}"
-              >Store <span class="sr-only">(current)</span></a
+            <a class="nav-link text-dark" href="{% url 'store' %}"
+              >Store <i class="fas fa-store"></i> <span class="sr-only">(current)</span></a
             >
           </li>
           
@@ -48,10 +50,10 @@
          
           
           <p id="cart-total">{{total_items_in_cart}}</p>
-          <a href="{% url 'logout' %}" class="btn btn-outline-warning ml-2">Logout</a>
+          <a href="{% url 'logout' %}" class=" ml-4 text-dark">Logout <i class="fas fa-sign-out-alt"></i></a>
           {% else %}
-          <a href="{% url 'login' %}" class="btn btn-outline-warning ml-2">Sign In</a>
-          <a href="{% url 'signup' %}" class="btn btn-outline-warning ml-2">Sign Up</a>
+          <a href="{% url 'login' %}" class="text-dark ml-3">Sign In <i class="fas fa-sign-in-alt"></i></a>
+          <a href="{% url 'signup' %}" class="text-dark ml-3">Sign Up <i class="fas fa-user-plus"></i></a>
          </a>
          {% endif %}
         </div>

@@ -21,4 +21,5 @@ path('', views.store, name='store'),
 path('cart/', views.cart, name='cart'),
 path('checkout/', views.checkout, name='checkout'),
 path('<int:slag>/', views.addtocart, name='addtocart'),
+path('<int:id>/delete/', views.delete_item, name='delete'),
 ]

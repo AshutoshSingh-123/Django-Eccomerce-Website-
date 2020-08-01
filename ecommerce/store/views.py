@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .models import Product, Cart
+from django.shortcuts import (get_object_or_404, 
+                              render,  
+                              HttpResponseRedirect) 
 # Create your views here.
 # cart fuctions
 def repeat(request):
@@ -29,7 +32,14 @@ def cart(request):
  return render(request, 'store/cart.html', context)
 
 def checkout(request):
- context={}
+ carts=Cart.objects.filter(cartuser=request.user)
+ total_price=0
+ total_items=0
+ for x in carts:
+  total_price=total_price+x.price
+  total_items=total_items+1
+
+ context={'carts':carts, 'total_price':total_price, 'total_items':total_items, 'total_items_in_cart':repeat(request)}
  return render(request, 'store/checkout.html', context)
 
 # -------------adding to cart list store id of all products already in cart-------------------------
@@ -58,4 +68,17 @@ def addtocart(request, slag):
   context={'products':products, 'total_items_in_cart':repeat(request), }
   return render(request, 'store/store.html', context)
  
+def delete_item(request, id):
+       
+    # fetch the object related to passed id 
+    obj = get_object_or_404(Cart, id = id) 
+    context ={'obj':obj, 'total_items_in_cart':repeat(request)}
   
+    if request.method =="POST": 
+        # delete object 
+        obj.delete() 
+        # after deleting redirect to  
+        # home page 
+        return HttpResponseRedirect("/cart") 
+  
+    return render(request, "store/delete_item.html", context) 

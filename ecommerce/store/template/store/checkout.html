@@ -50,17 +50,30 @@
   <hr>
   <h3>Order Summary</h3>
   <hr>
-  <div class="cart-row">
-   <div style="flex: 2;"><img style="width: 100px;" class="img-fluid" src="{% static 'images/cart.png' %}" alt=""></div>
-   <div style="flex: 2;" class="mt-4">Product 1</div>
-   <div style="flex: 2;" class="mt-4">$20</div>
-   <div style="flex: 2;" class="mt-4">x2</div>
+  <div class="box-element my-2">
+<div class="cart-row">
+   <div style="flex: 2;"></div>
+   <div style="flex: 2;" class="mt-4 text-success"><h6>Item</h6></div>
+   <div style="flex: 2;" class="mt-4  text-success "><h6>Price</h6></div>
+   <div style="flex: 2;" class="mt-4 text-success"><h6>Quantity</h6></div>
    
    
    
   </div>
-  <h5>Items: 2</h5>
-  <h5>Total: $40</h5>
+  </div>
+  {% for cart in carts  %}
+  <div class="cart-row">
+   <div style="flex: 2;"><img style="width: 100px;" class="img-fluid" src="{{cart.img.url}}" alt=""></div>
+   <div style="flex: 2;" class="mt-4">{{cart.name}}</div>
+   <div style="flex: 2;" class="mt-4">{{cart.price}}</div>
+   <div style="flex: 2;" class="mt-4">1</div>
+   
+   
+   
+  </div>
+  {% endfor %}
+  <h5>Items: {{total_items}}</h5>
+  <h5>Total: {{total_price}}</h5>
   </div>
  </div>
 </div>

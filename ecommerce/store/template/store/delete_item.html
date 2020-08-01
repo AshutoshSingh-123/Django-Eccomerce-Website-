@@ -1,0 +1,38 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row mt-3">
+  
+ <div class="col-lg-4 mt-5 ml-5">
+  <img class="thumbnail img-fluid" style="height:300px; width:100%;" src="{{ obj.img.url }}" alt="">
+  <div class="box-element product">
+<h6><strong>{{obj.name}}</strong></h6>
+<hr>
+
+{% comment %} <a href="#" class="btn btn-outline-success">Add to cart</a> {% endcomment %}
+
+{% comment %} <a  href="/{{product.id}}/" class="btn btn-outline-dark">Add to cart</a> {% endcomment %}
+
+
+
+
+<a href="#" class="btn btn-outline-success">View</a>
+<h4 style="display: inline-block; float: right;">${{obj.price}}</h4>
+
+  </div>
+ </div>
+ <div class="col-lg-4 mt-5 text-center" style='margin-top:100px;'> 
+    <!-- Create a Form -->
+    <form method="POST"> 
+        <!-- Security token by Django -->
+        {% csrf_token %} 
+        <h6 class='mt-5'>Are you want to delete this item ? </h6>
+        <input class='btn btn-danger' type="submit" value="Delete" /> 
+        <a href="{% url 'cart' %}" class='btn btn-outline-primary'>Cancel </a> 
+    </form> 
+</div>
+ 
+</div>
+
+{% endblock %}
+
